@@ -1,0 +1,42 @@
+{
+    {
+        "id" : id,(integer)
+        "name" : "<name>",
+        "description" : "<description>",
+        "date" : "<date>",
+        "time" : "<time>",
+        "image" : "<image_url>",
+    },
+    {
+        "id" : id,(integer)
+        "name" : "<name>",
+        "description" : "<description>",
+        "date" : "<date>",
+        "time" : "<time>",
+        "image" : "<image_url>",
+    },
+    ...
+}
+{
+    "id" : id,(integer)
+    "name" : "<name>",
+    "description" : "<description>",
+    "date" : "<date>",
+    "time" : "<time>",
+    "image" : "<image_url>",
+    "is_registered" : bool
+
+}
+{
+    "event_id" : id,(integer)
+}
+
+{
+    "email" : "<email>",
+    "password" : "<password>",
+    "name" : "<name>",
+    "id_proof" : image,
+    "is_thaparian" : true/false,
+    "roll_no" : "<roll_no>"/None,
+    "college" : "<college>"/Thapar,
+}
