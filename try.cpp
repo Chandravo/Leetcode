@@ -2,5 +2,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    cout<<min({5,7,1,6,9});
+    vector<int> q{1,2,3,4,5};
+    q.insert(q.begin()+2,0);
+    for (int i:q){
+        cout<<i<<" ";
+    }
 }

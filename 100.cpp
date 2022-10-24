@@ -11,23 +11,21 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int dfs(TreeNode *node, int& res){
-    if (node==nullptr){
-        return 0;
+bool isSameTree(TreeNode* p, TreeNode* q) {
+    if (p==nullptr && q==nullptr){
+        return true;
     }
-    int left = dfs(node->left,res);
-    int right = dfs(node->right,res);
-    res=max(res,left+right);
-    return 1+max(left,right);
-}
+    if (p==nullptr || q==nullptr){
+        return false;
+    }
 
-int diameterOfBinaryTree(TreeNode* root) {
-    int res=0;
-    dfs(root,res);
-    return res;
-      
+    if (p->val==q->val){
+        return isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
+    }            
+    else{
+        return false;
+    }
 }
-
 
 int main(){
     

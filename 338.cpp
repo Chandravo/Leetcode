@@ -2,18 +2,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 vector<int> countBits(int n) {
-    vector<int> a{0};
-    int k=1;
-    while (a.size()<=n){
-        for (int i=1;i<=k;i++){
-            if (a.size()>n){
-                break;
-            }
-            a.push_back(i);
-        }
-        k++;
-    } 
-    return a;       
+    vector<int> ans(n+1,0);
+    for (int i=1;i<=n;i++){
+        ans[i]=ans[i>>1] + (i&1);
+    }       
+    return ans;
 }
 int main(){
     for (int i:countBits(2)){
