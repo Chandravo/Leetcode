@@ -2,28 +2,44 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void jump(vector<int>& nums) {
+int jump(vector<int>& nums) {
 	if (nums.size()==1){
-		cout<<0;
+		return 0;
 	}
 	int x=nums.size()-1;
 	int jumps=0;
 	int i=x;
 
-	while (i!=0){
-		int f=0;
-		cout<<i<<endl;
-		while (i!=0){
+	while (x!=0){
+		// int f=0;
+		i=x;
+		// cout<<i<<endl;
+		while (true){
 			if (i+nums[i]>=x){
-				f=i;
+				break;
 			}
+			i++;
 		}
 
-		x=f;
+		x=i;
 		jumps++;
 
 	}  
-	cout<<"jumps = "<<jumps;  
+	return jumps;  
+}
+int jump(vector<int>& nums) {
+	int jumps=0;
+	int l=0,r=0;
+	while (r<nums.size()-1){
+		int f=0;
+		for (int i=l;i<=r;i++){
+			f=max(f,i+nums[i]);
+		}
+		l=r+1;
+		r=f;
+		jumps++;
+	}
+	return jumps;  
 }
 
 int main(){

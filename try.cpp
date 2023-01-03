@@ -1,32 +1,16 @@
-//This code is made by Chandravo Bhattacharya
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-#define xxx 12
-class stu{
-    int marks;
-    public:
-    void getdata(){
-        int x;
-        cin>>x;
-        marks=x;
-        cout<<"hehe"<<endl;
-    }
-    int returnmarks(){
-        return marks;
-    }
-};
-int main(){
-    stu arr[5];
-    int s=0;
-    
-    
-    for(int i=0;i<5;i++){
-        // int temp;cin>>temp;
-        arr[i].getdata();
-        s+=arr[i].returnmarks();
-    }
-    s=s/5;
-    cout<<s;
-    
-
+//r^n
+int power(int r,int n){
+    if(n==0) return 1;
+    int value = power(r,(n-1));
+    return r*value;
+}
+int main(){   
+    int n;
+    cin>>n;
+    int r;
+    cin>>r;
+    cout<<power(r,n);
+    return 0;
 }
