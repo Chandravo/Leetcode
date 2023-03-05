@@ -2,9 +2,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    double a=5.0/3.00;
-    double b=10.00/6.0;
-    cout<<a<<endl;
-    cout<<b<<endl;
-    if (a==b) cout<<"Yes"<<endl;
+    int n;cin>>n;
+    int *a;
+    a=new int(n+1);
+    a[0]=0;
+    for (int i=1;i<=n;i++){
+        a[i]=i;
+    }
+    for (auto i=0;i<=n;i++) cout<<a[i]<<" ";
+    cout<<endl;
 }
