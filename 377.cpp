@@ -2,19 +2,28 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
-int combinationSum4(vector<int> &c, int a){
-    // sort(c.begin(),c.end());
-    unordered_map<int,int> dp;
-    dp.insert({0,1});
-    for (int i=1;i<=a;i++){
-        dp[i]=0;
-        for (int j:c){
-            if (i-j>=0) dp[i]+=dp[i-j];
+int dp[1001];
+    int solve(vector<int>& nums, int sum, int ans){
+        if(sum==0){
+          return 1;
         }
+        if(sum<0) return 0;
+        if(dp[sum] != -1){
+            return dp[sum];
+        }
+        int cnt=0;
+        for(int i=0; i<nums.size(); i++){
+           cnt+=solve(nums, sum-nums[i],ans);
+        }
+           dp[sum]=cnt; ans+=cnt;
+        return ans;
     }
-    return dp[a];
-}
+
+    int combinationSum4(vector<int>& nums, int n) {
+        memset(dp, -1, sizeof(dp));
+       return solve(nums, n, 0);
+      
+    }
 
 // int combinationSum4(vector<int>& c, int a) {
 //     int n=c.size();

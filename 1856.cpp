@@ -3,27 +3,22 @@
 using namespace std;
 
 auto mod=1000000007;
-int maxSumMinProduct(vector<int>& nums) {
-    vector<long long unsigned int> dp(nums.size());
-    dp[0]=nums[0]*nums[0];
-    long long unsigned int res=0;
-    long long unsigned int minn=nums[0],summ=nums[0];
-    for (int i=1;i<nums.size();i++){
-        if (nums[i]<minn) minn=nums[i];
-        if (nums[i]*nums[i]>(minn*(summ+nums[i]))){
-            dp[i]=nums[i]*nums[i];
-            minn=nums[i];
-            summ=nums[i];
+
+
+int maxSumMinProduct(vector<int>& n) {
+    long res = 0;
+    vector<long> dp(n.size() + 1), st;
+    for (int i = 0; i < n.size(); ++i)
+       dp[i + 1] = dp[i] + n[i];
+    for (int i = 0; i <= n.size(); ++i) {
+        while (!st.empty() && (i == n.size() || n[st.back()] > n[i])) {
+            int j = st.back();
+            st.pop_back();
+            res = max(res, n[j] * (dp[i] - dp[st.empty() ? 0 : st.back() + 1]));
         }
-        else{
-            dp[i]=minn*(summ+nums[i]);
-            summ+=nums[i];
-        }
-        res=max(res,dp[i]);
-    }        
-    for (auto i:dp) cout<<i<<endl;
-    cout<<endl<<endl;
-    return res%mod;
+        st.push_back(i);
+    }
+    return res % 1000000007;
 }
 
 int main(){
