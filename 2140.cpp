@@ -29,6 +29,23 @@ long long mostPoints(vector<vector<int>>& q) {
     // return helper(q,0,dp);
 } 
 
+long long solve(vector<long long> &dp, vector<vector<int>> &q, int i){
+    if (i>=q.size()) return 0;
+    if (dp[i]!=-1) return dp[i];
+    return max(q[i][0]+solve(dp,q,i+q[i][1]+1),solve(dp,q,i+1));
+}
+
+long long mostPoints(vector<vector<int>> q){
+    vector<long long> dp(q.size(),-1);
+    // return solve(dp,q,0);
+    dp[q.size()-1]=q[q.size()-1][0];
+    for (int i=q.size()-2;i>=0;i--){
+        if (i+q[i][1]>=q.size()) dp[i]=max((long long)q[i][0],dp[i+1]);
+        else dp[i]=max((long long)q[i][0]+dp[i+q[i][1]+1],dp[i+1]);
+    }
+    return dp[0];
+}
+
 int main(){
     
 }
