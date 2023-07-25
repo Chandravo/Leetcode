@@ -1,2 +1,2 @@
-
-    vector<int> nums2{3};
+for (int i:cnt) cout<<i<<" ";
+    cout<<endl;
